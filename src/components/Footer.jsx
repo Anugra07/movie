@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Github, Twitter, Mail } from 'lucide-react';
+import { Mail } from 'lucide-react';
 import { Button } from '@/components/ui/enhanced-button';
 import { Separator } from '@/components/ui/separator';
 
 export function Footer() {
   return (
-    <footer className="w-full border-t border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <footer id="contact" className="w-full border-t border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container px-4 py-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand and Description */}
@@ -49,53 +49,18 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Connect */}
+          {/* Contact */}
           <div className="space-y-4">
-            <h3 className="font-semibold">Connect</h3>
-            <div className="flex gap-2">
-              <Button
-                variant="ghost"
-                size="icon"
-                asChild
+            <h3 className="font-semibold">Contact</h3>
+            <div className="space-y-2">
+              <p className="text-sm text-muted-foreground">Shagun Vishnoi</p>
+              <a
+                href="mailto:shagun.vishnoi2024@nst.rishihood.edu.in"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2"
               >
-                <a
-                  href="https://github.com/yourusername"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-foreground transition-colors"
-                >
-                  <Github className="h-4 w-4" />
-                  <span className="sr-only">GitHub</span>
-                </a>
-              </Button>
-              <Button
-                variant="ghost"
-                size="icon"
-                asChild
-              >
-                <a
-                  href="https://twitter.com/yourusername"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-foreground transition-colors"
-                >
-                  <Twitter className="h-4 w-4" />
-                  <span className="sr-only">Twitter</span>
-                </a>
-              </Button>
-              <Button
-                variant="ghost"
-                size="icon"
-                asChild
-              >
-                <a
-                  href="mailto:your@email.com"
-                  className="hover:text-foreground transition-colors"
-                >
-                  <Mail className="h-4 w-4" />
-                  <span className="sr-only">Email</span>
-                </a>
-              </Button>
+                <Mail className="h-4 w-4" />
+                shagun.vishnoi2024@nst.rishihood.edu.in
+              </a>
             </div>
           </div>
         </div>

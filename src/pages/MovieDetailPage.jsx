@@ -7,7 +7,6 @@ import {
   Clock, 
   Bookmark, 
   BookmarkCheck,
-  Play,
   Users,
   Award
 } from 'lucide-react';
@@ -25,7 +24,6 @@ export default function MovieDetailPage() {
   
   const [movie, setMovie] = useState(null);
   const [credits, setCredits] = useState(null);
-  const [videos, setVideos] = useState([]);
   const [reviews, setReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isInWatchLater, setIsInWatchLater] = useState(false);
@@ -38,16 +36,14 @@ export default function MovieDetailPage() {
       try {
         const movieId = parseInt(id);
         
-        const [movieData, creditsData, videosData, reviewsData] = await Promise.all([
+        const [movieData, creditsData, reviewsData] = await Promise.all([
           movieApi.getMovieDetails(movieId),
           movieApi.getMovieCredits(movieId),
-          movieApi.getMovieVideos(movieId),
           movieApi.getMovieReviews(movieId),
         ]);
 
         setMovie(movieData);
         setCredits(creditsData);
-        setVideos(videosData.results.filter(v => v.site === 'YouTube' && v.type === 'Trailer'));
         setReviews(reviewsData.results);
         setIsInWatchLater(movieApi.watchLaterStorage.isInWatchLater(movieId));
       } catch (error) {
@@ -109,7 +105,6 @@ export default function MovieDetailPage() {
 
   const director = credits?.crew.find(person => person.job === 'Director');
   const mainCast = credits?.cast.slice(0, 8) || [];
-  const trailer = videos[0];
 
   return (
     <div className="min-h-screen bg-background">
@@ -214,17 +209,6 @@ export default function MovieDetailPage() {
                       </>
                     )}
                   </Button>
-                  
-                  {trailer && (
-                    <Button
-                      variant="cinema"
-                      size="lg"
-                      onClick={() => window.open(`https://www.youtube.com/watch?v=${trailer.key}`, '_blank')}
-                    >
-                      <Play className="w-5 h-5 mr-2" />
-                      Watch Trailer
-                    </Button>
-                  )}
                 </div>
 
                 {/* Overview */}
