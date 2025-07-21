@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Cinematic Movie App Design System - Rich, immersive colors for premium movie experience */
+
+@layer base {
+  :root {
+    /* Core cinema-inspired palette */
+    --background: 222 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 84% 5.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 84% 5.9%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Primary - Deep cinema blue */
+    --primary: 224 71% 12%;
+    --primary-foreground: 210 40% 98%;
+    --primary-glow: 224 71% 25%;
+
+    /* Secondary - Rich purple accent */
+    --secondary: 263 70% 15%;
+    --secondary-foreground: 210 40% 98%;
+
+    /* Muted - Subtle grays */
+    --muted: 215 27% 17%;
+    --muted-foreground: 217 13% 65%;
+
+    /* Accent - Golden highlights */
+    --accent: 45 93% 47%;
+    --accent-foreground: 222 84% 4.9%;
+
+    /* Destructive - Red for warnings */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* UI elements */
+    --border: 215 27% 17%;
+    --input: 215 27% 17%;
+    --ring: 224 71% 25%;
+
+    /* Movie app specific colors */
+    --cinema-gold: 45 93% 47%;
+    --cinema-silver: 210 11% 71%;
+    --movie-card: 222 84% 5.5%;
+    --rating-star: 45 93% 47%;
+    --genre-badge: 263 70% 15%;
+
+    /* Radius */
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Custom scrollbar for webkit browsers */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-muted;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary-glow;
+  }
+}
+
+@layer components {
+  /* Movie card component styles */
+  .movie-card {
+    @apply bg-card border-border/50 hover:border-primary-glow/50 transition-all duration-300;
+  }
+
+  .movie-card:hover {
+    @apply transform -translate-y-2 scale-105 shadow-lg;
+  }
+
+  /* Hero section */
+  .hero-section {
+    @apply relative bg-gradient-to-br from-primary to-secondary;
+  }
+
+  /* Button variants */
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
+  }
+
+  .btn-accent {
+    @apply bg-accent text-accent-foreground hover:bg-accent/90;
+  }
+
+  /* Star rating */
+  .star-rating {
+    @apply text-rating-star;
+  }
+
+  /* Genre badge */
+  .genre-badge {
+    @apply bg-genre-badge text-secondary-foreground border border-genre-badge/30;
+  }
+
+  /* Search bar */
+  .search-bar {
+    @apply bg-card/80 backdrop-blur border border-border/50 focus-within:ring-2 ring-ring/30;
+  }
+}
